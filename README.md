@@ -1,2 +1,5 @@
-# carta-kubernetes
-Test bed for the deployment of Carta on Kubernetes
+# CARTA on kubernetes
+
+Test bed for the deployment of Carta Visualization tool on Kubernetes using Helm
+
+
