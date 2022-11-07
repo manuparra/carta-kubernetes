@@ -2,7 +2,7 @@
 
 Test bed for the deployment of Carta Visualisation tool on Kubernetes and Docker
 
-* [Deployment based on Docker Containers](#deployment-based-on-docker-containers)
+* [Deployment based on `docker` containers](#deployment-based-on-docker-containers)
 * [Deployment based on `docker-compose`](#deployment-based-on--docker-compose-)
 * [Deployment on Kubernetes with `compose`](#deployment-on-kubernetes-with--compose-)
 
