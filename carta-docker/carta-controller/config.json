@@ -1,18 +1,25 @@
 {
     "$schema": "./config_schema.json",
     "authProviders": {
-        "ldapOptions": {
-                "url":"ldap://casa-ldap:389",
+            "ldap": {
+            "publicKeyLocation": "/etc/carta/carta_public.pem",
+            "privateKeyLocation": "/etc/carta/carta_private.pem",
+            "issuer": "localhost",
+            "ldapOptions": {
+                "url":"ldap://192.168.100.23:389",
                 "searchBase":"ou=Users,dc=openstack,dc=org",
                 "bindDN":"cn=admin,dc=openstack,dc=org",
-                "bindCredentials":"<redacted>"
-               }
+                "bindCredentials":"password",
+                "starttls":False,  
+              }
+        }
+
     },
     "database": {
-        "uri": "mongodb://carta-mongodb:27017",
+        "uri": "mongodb://192.168.100.23:27017",
         "databaseName": "CARTA"
     },
-    "serverAddress": "http://localhost:8000",
+    "serverAddress": "http://192.168.100.23:8000",
     "processCommand": "/usr/bin/carta_backend",
     "killCommand": "/usr/local/bin/carta-kill-script",
     "rootFolderTemplate": "/tmp/",

@@ -19,7 +19,7 @@ RUN adduser carta
 RUN mkdir -p /var/log/carta
 RUN chown -R carta /var/log/carta
 
-COPY ./sudoer-carta-controller  /etc/sudoers.d/carta_controller
+COPY ./sudoers-carta-controller  /etc/sudoers.d/carta_controller
 
 RUN mkdir /etc/carta
 RUN chown -R carta /etc/carta
