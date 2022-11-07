@@ -1,0 +1,46 @@
+version: '3'
+services:
+  carta-proxy:
+    container_name: carta-proxy
+    image: carta-proxy:latest
+    build:
+      context: proxy
+      dockerfile: './Dockerfile'
+    depends_on:
+      - carta-core
+      - carta-mongodb
+    ports:
+      - 80:80
+      - 443:443
+    #volumes:
+      #- ./nginx/config:/etc/nginx
+      #- ./nginx/certs:/etc/ssl/private
+  carta-mongodb:
+    container_name: carta-mongodb
+    image: mongo
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./mongo/data/:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+  carta-core:
+    container_name: carta-core
+    image: carta-core:latest
+    build:
+      context: carta
+      dockerfile: './Dockerfile'
+      args:
+        USERNAME: cartauser
+        PASSWORD: password
+    restart: always
+    depends_on:
+      - carta-mongodb
+    ports:
+      - 8000:8000
+    volumes:
+      - ./carta/assets/images/:/opt/images
+      # Uncomment the following to mount a data volume
+      # - /host/path/to/data/:/data/

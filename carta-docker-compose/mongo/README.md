@@ -1,0 +1,1 @@
+The data directory is a placeholder for the mongodb persistent volume.

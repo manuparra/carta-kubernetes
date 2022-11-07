@@ -1,0 +1,27 @@
+{
+    "$schema": "./config_schema.json",
+    "authProviders": {
+        "pam": {
+            "publicKeyLocation": "/etc/carta/carta_public.pem",
+            "privateKeyLocation": "/etc/carta/carta_private.pem",
+            "issuer": "carta-core"
+        }
+    },
+    "database": {
+        "uri": "mongodb://carta-mongodb:27017",
+        "databaseName": "CARTA"
+    },
+    "serverAddress": "http://localhost:8000",
+    "processCommand": "/usr/bin/carta_backend",
+    "killCommand": "/usr/local/bin/carta-kill-script",
+    "rootFolderTemplate": "/",
+    "baseFolderTemplate": "/",
+    "dashboard": {
+        "bannerColor": "#d2dce5",
+        "backgroundColor": "#f6f8fa",
+        "bannerImage": "/opt/images/skao_logo.gif",
+        "infoText": "Welcome to the CARTA server.",
+        "loginText": "<span>Please enter your login credentials:</span>",
+        "footerText": "<span>If you have any problems, comments or suggestions, please <a href='mailto:test@test.com'>contact us.</a></span>"
+    }
+}
