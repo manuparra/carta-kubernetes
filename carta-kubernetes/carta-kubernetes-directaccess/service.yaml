@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: carta-direct-access
+  labels:
+    run: carta-direct-access
+spec:
+  type: NodePort
+  ports:
+  - port: 3002
+    targetPort: 3002
+    nodePort: 30005
+    protocol: TCP
+  selector:
+    run: carta-direct-access

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carta-shared-fs
+spec:
+  selector:
+    matchLabels:
+      run: carta-shared-fs
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: carta-shared-fs
+    spec:
+      containers:
+      - name: carta-shared-fs
+        image: carta:v1
+        ports:
+        - containerPort: 3002
+        volumeMounts:
+        - name: carta-persistent-storage
+          mountPath: /images
+      volumes:
+      - name: carta-persistent-storage
+        persistentVolumeClaim:
+          claimName: carta-pv-claim

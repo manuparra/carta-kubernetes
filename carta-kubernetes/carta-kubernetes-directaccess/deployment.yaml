@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carta-direct-access
+spec:
+  selector:
+    matchLabels:
+      run: carta-direct-access
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: carta-direct-access
+    spec:
+      containers:
+      - name: carta-direct-access
+        image: carta:v1
+        ports:
+        - containerPort: 3002
+        env:
+        - name: CARTAROOTFOLDER
+          value: "/images/NVSS_M51.fits"
