@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carta-dev
+spec:
+  selector:
+    matchLabels:
+      run: carta-dev
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: carta-dev
+    spec:
+      containers:
+      - name: carta-dev
+        image: carta:v1
+        ports:
+        - containerPort: 3002

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carta-shared
+spec:
+  selector:
+    matchLabels:
+      run: carta-shared
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: carta-shared
+    spec:
+      containers:
+      - name: carta-shared
+        image: carta:v1
+        ports:
+        - containerPort: 3002
+        volumeMounts:
+        - name: host-mount
+          mountPath: /images
+      volumes:
+      - name: host-mount
+        hostPath: 
+          path: /Users/manuparra/Documents/carta/ 
