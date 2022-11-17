@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: carta-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-proxy-protocol: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - carta.localhost.com
+    secretName: echo-tls
+  rules:
+    - host: carta.localhost.com
+      http:
+          paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: carta-shared-fs
+                port:
+                  number: 80
